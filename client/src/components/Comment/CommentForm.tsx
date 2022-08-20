@@ -1,15 +1,23 @@
 import { useState } from "react"
 
+interface Props {
+  loading: boolean
+  error?: string
+  onSubmit: (message: string) => Promise<void>
+  autoFocus?: boolean
+  initialValue?: string
+}
+
 export function CommentForm({
   loading,
   error,
   onSubmit,
   autoFocus = false,
   initialValue = "",
-}) {
+}: Props) {
   const [message, setMessage] = useState(initialValue)
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     onSubmit(message).then(() => setMessage(""))
   }
@@ -20,8 +28,9 @@ export function CommentForm({
         <textarea
           autoFocus={autoFocus}
           value={message}
-          onChange={e => setMessage(e.target.value)}
+          onChange={(e) => setMessage(e.target.value)}
           className="message-input"
+          placeholder="Comment here..."
         />
         <button className="btn" type="submit" disabled={loading}>
           {loading ? "Loading" : "Post"}

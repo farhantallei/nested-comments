@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { Post } from "./components/Post"
-import { PostList } from "./components/PostLists"
+import { PostList } from "./components/PostList"
 import { PostProvider } from "./contexts/PostContext"
 
 function App() {

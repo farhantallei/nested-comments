@@ -198,4 +198,5 @@ button {
 
 .btn[disabled] {
   --color: hsl(var(--hue), 20%, 74%);
+  cursor: default;
 }
