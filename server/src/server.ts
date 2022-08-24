@@ -40,6 +40,6 @@ app.addHook("onRequest", async (request, reply) => {
 
 app.register(postRoutes, { prefix: "/posts" })
 
-app.listen({ port: process.env.PORT })
+app.listen({ port: process.env.PORT, host: process.env.HOST })
 
 export default app
