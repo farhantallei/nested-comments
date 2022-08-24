@@ -52,12 +52,12 @@ export const LikeCommentHandler: RouteHandlerTypebox<
   const like = await getCommentLike(reply, { userId, commentId })
 
   if (like) {
-    await likeComment(reply, { userId, commentId })
-    return { addLike: true }
+    await unlikeComment(reply, { userId, commentId })
+    return { addLike: false }
   }
 
-  await unlikeComment(reply, { userId, commentId })
-  return { addLike: false }
+  await likeComment(reply, { userId, commentId })
+  return { addLike: true }
 }
 
 export const UpdateCommentHandler: RouteHandlerTypebox<
