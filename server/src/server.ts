@@ -9,6 +9,8 @@ import prisma from "./prisma"
 import { commitToDB } from "./utils/commitToDB"
 dotenv.config()
 
+const whitelist = [process.env.CLIENT_URL, process.env.MOBILE_URL]
+
 const app = fastify()
 app.register(sensible)
 app.register(cookie, { secret: process.env.COOKIE_SECRET })
