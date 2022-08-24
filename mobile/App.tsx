@@ -1,20 +1,23 @@
+import { PostListContext } from "@app/contexts/PostListContext"
+import Navigation from "@app/navigation"
+import { SplashScreen } from "@app/screens/SplashScreen"
+import { PostListData } from "@app/types"
 import { StatusBar } from "expo-status-bar"
-import { StyleSheet, Text, View } from "react-native"
+import { useState } from "react"
 
-export default function App() {
+function App() {
+  const [posts, setPosts] = useState<PostListData[]>([])
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PostListContext.Provider
+      value={{ posts, setPosts, errorMessage, setErrorMessage }}>
+      <SplashScreen>
+        <Navigation />
+        <StatusBar style="dark" />
+      </SplashScreen>
+    </PostListContext.Provider>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})
+export default App
